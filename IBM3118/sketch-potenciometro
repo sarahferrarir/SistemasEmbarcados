@@ -1,0 +1,21 @@
+Sketch Potenciômetro
+
+#define sensorPin A1
+
+int valorSensor = 0; 
+float voltagem; 
+
+void setup(){
+  Serial.begin(9600); 
+  delay(100); 
+}
+
+void loop(){
+  valorSensor = analogRead(sensorPin); 
+  voltagem = valorSensor * (5.0 / 1024); 
+  Serial.print("Tensão do potenciômetro: "); 
+  Serial.print(voltagem); 
+  Serial.print(" Valor: "); 
+  Serial.println(valorSensor); 
+  delay(500); 
+}

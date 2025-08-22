@@ -1,6 +1,6 @@
-## Requisitos
+# Requisitos
 
-# Materias
+### Materias
 - Entre 2 e 4 Sensores de células de carga (Tem no IBMEC)
 - Câmera externa
 - Plataforma/balança impressão 3D (Impressora 3D tem no IBMEC)

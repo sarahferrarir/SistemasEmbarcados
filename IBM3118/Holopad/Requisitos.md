@@ -4,3 +4,9 @@
 - Hardware:
   - Computador/Notebook
   - câmera (webcam ou câmera externa)
+- Biblioteca
+  - Mediapipe         Version = 0.10.0
+  - Opencv-python     Version = 4.8.0.76
+  - Pyatougui         Version = 0.9.55
+  - Numpy             Version = 1.21.0
+  - Imutils           Version = 0.54

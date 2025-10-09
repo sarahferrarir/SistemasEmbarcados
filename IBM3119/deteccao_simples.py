@@ -1,6 +1,6 @@
 # deteccao_simples.py
 
-#essa versão foi a primeira implementada contém o modelo COCO do YOLOV8 que identifica objetos genéricos. Para o projeto final usaremos uma versão desse modelo com fine-tuning
+# essa versão foi a primeira implementada: contém o modelo COCO do YOLOV8 que identifica objetos genéricos. Para o projeto final usaremos uma versão desse modelo com fine-tuning
 
 import cv2
 from ultralytics import YOLO

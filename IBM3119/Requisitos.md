@@ -1,7 +1,7 @@
 # Requisitos
 
 ### Materias
-- 1 Sensor de células de carga
+- 1 Sensor de célula de carga
 - Câmera integrada/webcam
 - Plataforma/balança impressão 3D
    - [Base do sensor e plataforma](https://www.printables.com/model/374800-load-cell-scale-mount)

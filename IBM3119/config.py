@@ -1,0 +1,3 @@
+# Chave APIs e url do banco de dados 
+SUPABASE_API = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ4a25xeWhqdHZuaHZ0bm1pc3RlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA0NDc4NzQsImV4cCI6MjA3NjAyMzg3NH0.TWA-O6TxBL0Qoouk7s8gqJcd2Uca3PuF5SnU5SLGSAM"
+SUPABASE_URL = "https://bxknqyhjtvnhvtnmiste.supabase.co"

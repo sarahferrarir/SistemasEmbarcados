@@ -4,11 +4,24 @@
 
 import cv2
 from ultralytics import YOLO
+from supabase import create_client, Client
+import config
+
+# Teste de implementação com o banco de dados
+try:
+    url: str = config.SUPABASE_URL
+    key: str = config.SUPABASE_API
+
+    supabase: Client = create_client(url, key)
+    print("Supabase carregado com sucesso!")
+except Exception as e:
+    print(f"Erro ao carregar o banco de dados: {e}")
+    exit()
 
 # --- CONFIGURAÇÃO DO MODELO ---
 
 try:
-    model = YOLO('yolov8n.pt')
+    model = YOLO('modeloV1.pt')
     print("Modelo YOLOv8 carregado com sucesso!")
 except Exception as e:
     print(f"Erro ao carregar o modelo: {e}")

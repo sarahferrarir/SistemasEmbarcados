@@ -13,7 +13,7 @@ try:
     key: str = config.SUPABASE_API
 
     supabase: Client = create_client(url, key)
-    print("Supabase carregado com sucesso!")
+    print("Banco de dados carregado com sucesso!")
 except Exception as e:
     print(f"Erro ao carregar o banco de dados: {e}")
     exit()
@@ -42,12 +42,39 @@ while True:
     if not ret:
         print("Fim do stream de vídeo ou erro de captura.")
         break
-
     
     results = model(frame, verbose=False) # verbose=False para não poluir o console
 
     # .plot() adiciona as detecções ao frame
     annotated_frame = results[0].plot()
+
+    for box in results[0].boxes:
+
+        # Pegar o nome da fruta
+        class_id = int(box.cls[0])
+        object_name = results[0].names[class_id]
+
+        try:
+            # Consulta a tabela para encontrar o objeto (fruta) pelo nome 
+            response = supabase.table("frutas").select("produto_nome","preco_kg").eq("produto_nome", object_name).execute()
+
+            # Caso a consulta seja aconteça com sucesso, vai imprimir o nome (produto_nome) e o preço por kilo da fruta (preco)
+            if response.data:
+                produto_info = response.data[0]
+                nome = produto_info.get("produto_nome")
+                preco = produto_info.get("preco_kg")
+
+            # Pega as coordenadas da caixa onde o sistema detecto a fruta
+            x1, y1, x2, y2 = map(int, box.xyxy[0])
+
+            # Texto de saida dos dados da fruta
+            info = f"Nome da fruta: {nome} | Preço: {preco}/kg"
+
+            # Configurações para a saida dos dados
+            cv2.putText(annotated_frame, info, (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0, 255, 0), 2)
+        
+        except Exception as e:
+            print(f"Erro ao detectar a fruta: {e}")
 
     # Exibe o frame com as detecções em uma janela
     cv2.imshow("Detecção de Objetos YOLOv8", annotated_frame)

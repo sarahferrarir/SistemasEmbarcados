@@ -1,3 +1,20 @@
-# Chave APIs e url do banco de dados 
-SUPABASE_API = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ4a25xeWhqdHZuaHZ0bm1pc3RlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA0NDc4NzQsImV4cCI6MjA3NjAyMzg3NH0.TWA-O6TxBL0Qoouk7s8gqJcd2Uca3PuF5SnU5SLGSAM"
-SUPABASE_URL = "https://bxknqyhjtvnhvtnmiste.supabase.co"
+import os
+from dotenv import load_dotenv
+
+# Carrega as variáveis do .env
+load_dotenv()
+
+#armazenamos em constantes Python
+SUPABASE_URL = os.getenv("SUPABASE_URL")
+SUPABASE_KEY = os.getenv("SUPABASE_KEY")
+
+# caminho do modelo
+MODELO_PATH = "modeloV1.pt"
+
+#confianca usada
+CONFIDENCE_THRESHOLD = 0.70
+
+# Verificação 
+if not SUPABASE_URL or not SUPABASE_KEY:
+    print("⚠️  Atenção: Variáveis SUPABASE_URL ou SUPABASE_KEY não encontradas.")
+    print("Certifique-se de ter um arquivo .env na raiz do projeto.")

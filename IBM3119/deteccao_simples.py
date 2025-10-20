@@ -1,32 +1,22 @@
-# deteccao_simples.py
-
-# essa versão foi a primeira implementada: contém o modelo COCO do YOLOV8 que identifica objetos genéricos. Para o projeto final usaremos uma versão desse modelo com fine-tuning
-
 import cv2
 from ultralytics import YOLO
 from supabase import create_client, Client
 import config
+import PySimpleGUI as sg
 
-# Teste de implementação com o banco de dados
+
+# CONFIGURAÇÃO DO BANCO DE DADOS 
+#importar o arquivo db.py e importar suas funções
+
+
+# CARREGAR MODELO
 try:
-    url: str = config.SUPABASE_URL
-    key: str = config.SUPABASE_API
 
-    supabase: Client = create_client(url, key)
-    print("Banco de dados carregado com sucesso!")
+    model = YOLO(config.MODELO_PATH)
+    print(f"✅ Modelo {config.MODELO_PATH} carregado com sucesso!")
 except Exception as e:
-    print(f"Erro ao carregar o banco de dados: {e}")
+    print(f"❌ Erro ao carregar o modelo: {e}")
     exit()
-
-# --- CONFIGURAÇÃO DO MODELO ---
-
-try:
-    model = YOLO('modeloV1.pt')
-    print("Modelo YOLOv8 carregado com sucesso!")
-except Exception as e:
-    print(f"Erro ao carregar o modelo: {e}")
-    exit()
-
 
 # Abre a webcam
 cap = cv2.VideoCapture(0)
@@ -36,54 +26,58 @@ if not cap.isOpened():
 
 print("Webcam iniciada. Pressione 'q' para sair.")
 
+# limiar de confiança 
+CONFIDENCE_THRESHOLD = config.CONFIDENCE_THRESHOLD 
+
+#Loop principal
 while True:
-    
+    # Lê um frame da webcam
     ret, frame = cap.read()
     if not ret:
         print("Fim do stream de vídeo ou erro de captura.")
         break
-    
-    results = model(frame, verbose=False) # verbose=False para não poluir o console
 
-    # .plot() adiciona as detecções ao frame
-    annotated_frame = results[0].plot()
+    # Roda o modelo
+    results = model(frame, verbose=False) 
 
-    for box in results[0].boxes:
-
-        # Pegar o nome da fruta
-        class_id = int(box.cls[0])
-        object_name = results[0].names[class_id]
-
-        try:
-            # Consulta a tabela para encontrar o objeto (fruta) pelo nome 
-            response = supabase.table("frutas").select("produto_nome","preco_kg").eq("produto_nome", object_name).execute()
-
-            # Caso a consulta seja aconteça com sucesso, vai imprimir o nome (produto_nome) e o preço por kilo da fruta (preco)
-            if response.data:
-                produto_info = response.data[0]
-                nome = produto_info.get("produto_nome")
-                preco = produto_info.get("preco_kg")
-
-            # Pega as coordenadas da caixa onde o sistema detecto a fruta
-            x1, y1, x2, y2 = map(int, box.xyxy[0])
-
-            # Texto de saida dos dados da fruta
-            info = f"Nome da fruta: {nome} | Preço: {preco}/kg"
-
-            # Configurações para a saida dos dados
-            cv2.putText(annotated_frame, info, (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0, 255, 0), 2)
+    for result in results:
         
-        except Exception as e:
-            print(f"Erro ao detectar a fruta: {e}")
+        for box in result.boxes:
+            # Extrai o valor de confiança
+            confidence = box.conf[0].item() 
 
-    # Exibe o frame com as detecções em uma janela
-    cv2.imshow("Detecção de Objetos YOLOv8", annotated_frame)
+            # --- filtragem ---
+            
+            # Só processa e desenha se a confiança for igual ou superior ao limiar
+            if confidence >= CONFIDENCE_THRESHOLD:
+                
+                # coordenadas da caixa
+                x1, y1, x2, y2 = map(int, box.xyxy[0])
+                
+                # nome da classe detectada
+                name_class = result.names[int(box.cls[0].item())]
 
-    # Encerra detecção caso apertar 'q'
+                # 3. Prepara o texto para exibição
+                texto = f'{name_class} {confidence:.2f}'
+                cor = (0, 255, 0) # Cor verde
+
+                # 4. Desenha a caixa no frame
+                cv2.rectangle(frame, (x1, y1), (x2, y2), cor, 2)
+                
+                # 5. Escreve o texto nome + confiança
+                cv2.putText(frame, texto, (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.7, cor, 2)
+
+    # Exibe o frame final no OpenCV
+    cv2.imshow("Detecção de Objetos", frame)
+
+    # Verifica se a tecla 'q' foi pressionada para sair
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
-# Libera os recursos ao finalizar
+# --- FINALIZAÇÃO ---
+print("Encerrando aplicação...")
 cap.release()
 cv2.destroyAllWindows()
 print("Aplicação encerrada.")
+
+

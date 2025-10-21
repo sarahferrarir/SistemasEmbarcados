@@ -9,3 +9,6 @@
 - Visão computacional, para identificar o tipo de fruta na balança
 - Confesor AD (HX711 A/D Converter)
 - Amplificador
+- Banco de dados (Supabase)
+  - API = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ4a25xeWhqdHZ uaHZ0bm1pc3RlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA0NDc4NzQsImV4cCI6MjA3NjAyMzg3NH0.TWA-O6TxBL0Qoouk7s8gqJcd2Uca3PuF5SnU5SLGSAM
+   - URL = https://bxknqyhjtvnhvtnmiste.supabase.co

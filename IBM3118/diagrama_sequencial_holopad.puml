@@ -1,0 +1,47 @@
+@startuml
+
+skinparam defaultFontSize 24
+
+actor User
+participant Webcam
+participant HolopadApplication as App
+participant HandTrackingModule as CV_Module
+participant CursorControlModule as GUI_Module
+participant OperatingSystem as OS
+
+User -> App: startApplication()
+App -> Webcam: activate()
+
+loop While system is active
+    Webcam -> App: sendFrame(image)
+    App -> CV_Module: processFrame(image)
+    activate CV_Module
+    CV_Module --> App: returnLandmarks(landmarks)
+    deactivate CV_Module
+    
+    App -> App: interpretGesture(landmarks)
+    
+    alt Gesture == Move (Index and Middle Finger Together)
+        App -> App: applySmoothing(x, y)
+        App -> GUI_Module: moveCursor(smooth_x, smooth_y)
+        activate GUI_Module
+        GUI_Module -> OS: systemCall_Move(x, y)
+        deactivate GUI_Module
+    
+    else Gesture == Click (Index Finger and Thumb Together)
+        App -> GUI_Module: triggerClick()
+        activate GUI_Module
+        GUI_Module -> OS: systemCall_Click()
+        deactivate GUI_Module
+        
+    else No valid gesture
+        App ->x OS: (no action)
+    end
+    
+    OS -> OS: updateCursorOnScreen()
+end
+
+User -> App: stopApplication()
+App -> Webcam: deactivate()
+
+@enduml

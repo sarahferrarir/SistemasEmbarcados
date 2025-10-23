@@ -2,7 +2,7 @@
 
 ## Teste #1: Iluminação Ideal (Solar)
 
-**Condições:** Varanda com janelas de vidro à tarde (luz solar difusa).
+**Condições:** Varanda com janelas de vidro à tarde (luz solar difusa).  
 **Luminosidade (Lux):** `624 Lux`
 
 | Funcionalidade | Resultado | Observações |
@@ -18,14 +18,14 @@
 | **Gesto de Parar** | Imediato | Funcionou na primeira tentativa. |
 
 ### Resumo Geral do Teste #1
-**Análise:** Condição de iluminação perfeita. O modelo operou com máxima performance, precisão e responsividade em todas as funcionalidades.
+**Análise:** Condição de iluminação perfeita. O modelo operou com máxima performance, precisão e responsividade em todas as funcionalidades.   
 **Conclusão:** ✅ **Usável**
 
 ---
 
 ## Teste #2: Iluminação Interna (Boa)
 
-**Condições:** Sala bem iluminada (luz central acesa e janelas abertas).
+**Condições:** Sala bem iluminada (luz central acesa e janelas abertas).  
 **Luminosidade (Lux):** `137 Lux`
 
 | Funcionalidade | Resultado | Observações |
@@ -41,14 +41,14 @@
 | **Gesto de Parar** | Imediato | Funcionou na primeira tentativa. |
 
 ### Resumo Geral do Teste #2
-**Análise:** Iluminação interna muito boa. O desempenho geral continua excelente, mas com uma leve queda na responsividade (latência) e na precisão do clique.
+**Análise:** Iluminação interna muito boa. O desempenho geral continua excelente, mas com uma leve queda na responsividade (latência) e na precisão do clique.   
 **Conclusão:** ✅ **Usável**
 
 ---
 
 ## Teste #3: Iluminação Interna (Padrão)
 
-**Condições:** Quarto com a luz central acesa (sem luz solar).
+**Condições:** Quarto com a luz central acesa (sem luz solar).  
 **Luminosidade (Lux):** `43 Lux`
 
 | Funcionalidade | Resultado | Observações |
@@ -64,14 +64,14 @@
 | **Gesto de Parar** | Imediato | Funcionou na primeira tentativa. |
 
 ### Resumo Geral do Teste #3
-**Análise:** O desempenho foi funcionalmente idêntico ao Teste #2, sugerindo que `~40 Lux` ainda é suficiente para uma operação robusta.
+**Análise:** O desempenho foi funcionalmente idêntico ao Teste #2, sugerindo que `~40 Lux` ainda é suficiente para uma operação robusta.  
 **Conclusão:** ✅ **Usável**
 
 ---
 
 ## Teste #4: Iluminação Baixa (Lâmpada)
 
-**Condições:** Quarto escuro com uma lâmpada (abajur) ligada.
+**Condições:** Quarto escuro com uma lâmpada (abajur) ligada.  
 **Luminosidade (Lux):** `5 Lux`
 
 | Funcionalidade | Resultado | Observações |
@@ -87,15 +87,15 @@
 | **Gesto de Parar** | Imediato | Funcionou. (Ver Análise). |
 
 ### Resumo Geral do Teste #4
-**Análise:** Desempenho severamente degradado. A baixa luz causou "jitter" e alta latência.
-**Bug Crítico:** Ocorreram conflitos de gestos, principalmente o modelo interpretando cliques/scrolls como o gesto de "Parar", forçando a reinicialização do programa.
+**Análise:** Desempenho severamente degradado. A baixa luz causou "jitter" e alta latência.  
+**Bug Crítico:** Ocorreram conflitos de gestos, principalmente o modelo interpretando cliques/scrolls como o gesto de "Parar", forçando a reinicialização do programa.  
 **Conclusão:** ⚠️ **Usável com dificuldade**
 
 ---
 
 ## Teste #5: Iluminação Extrema (Monitor)
 
-**Condições:** Quarto escuro, apenas com a iluminação do monitor.
+**Condições:** Quarto escuro, apenas com a iluminação do monitor.  
 **Luminosidade (Lux):** `1 Lux`
 
 | Funcionalidade | Resultado | Observações |
@@ -104,5 +104,5 @@
 | **Todos os Gestos** | Falha | Qualquer gesto (apontar, clicar, etc.) foi interpretado erroneamente como o gesto de "Parar". |
 
 ### Resumo Geral do Teste #5
-**Análise:** Falha crítica e total. O modelo não consegue distinguir landmarks com eficácia, interpretando qualquer movimento como o gesto de punho fechado ("Parar"). O programa encerrava imediatamente ao tentar qualquer interação.
-**Conclusão:** ❌ **Inutilizável**
+**Análise:** Falha crítica e total. O modelo não consegue distinguir landmarks com eficácia, interpretando qualquer movimento como o gesto de punho fechado ("Parar"). O programa encerrava imediatamente ao tentar qualquer interação.   
+**Conclusão:** ❌ **Inutilizável**   

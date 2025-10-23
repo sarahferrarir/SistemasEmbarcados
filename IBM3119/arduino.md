@@ -1,20 +1,9 @@
-/*
-  Rui Santos
-  Complete project details at https://RandomNerdTutorials.com/arduino-load-cell-hx711/
-  
-  Permission is hereby granted, free of charge, to any person obtaining a copy
-  of this software and associated documentation files.
-  
-  The above copyright notice and this permission notice shall be included in all
-  copies or substantial portions of the Software.
-*/
-
 // Calibrating the load cell
 #include "HX711.h"
 
 // HX711 circuit wiring
-const int LOADCELL_DOUT_PIN = 4;
-const int LOADCELL_SCK_PIN = 5;
+const int LOADCELL_DOUT_PIN = 6;
+const int LOADCELL_SCK_PIN = 7;
 
 HX711 scale;
 
@@ -35,7 +24,7 @@ void loop() {
     delay(5000);
     long reading = scale.get_units(10);
     Serial.print("Result: ");
-    Serial.println(reading / 0.42);
+    Serial.println((reading -11) / 224.1);
   } 
   else {
     Serial.println("HX711 not found.");
@@ -44,3 +33,4 @@ void loop() {
 }
 
 //calibration factor will be the (reading)/(known weight)
+// Peso * 10 = ((Leitura_ADC - 11) * 100) / 2241

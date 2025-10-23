@@ -10,7 +10,7 @@ import cursor_control  # Para acessar os handlers (handle_pointing) e o estado (
 from utils import (    # Para importar as funções de detecção de gestos
     is_scroll_gesture,
     fingers_together,
-    is_fist
+    is_hang_loose
 )
 
 # --- Orquestrador Principal ---
@@ -47,8 +47,8 @@ def process_gestures(frame, hand_landmarks, mp_draw, mp_hands):
         print("✋ Cursor desativado")
         
         # CHECAGEM DE "PARAR":
-        if is_fist(hand_landmarks):
-            print("🛑 Gesto de PARAR detectado! Encerrando...")
+        if is_hang_loose(hand_landmarks):
+            print("🛑 Gesto de PARAR (Hang Loose) detectado! Encerrando...")
             cv2.putText(frame, "PARANDO...", (150, 240), cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 0, 255), 3)
             return False
 

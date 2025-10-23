@@ -5,6 +5,7 @@ import pyautogui
 # --- Parâmetros de Gestos ---
 FINGER_DISTANCE_THRESHOLD = 0.05  # Distância para "juntar" os dedos (apontar)
 SCROLL_FINGER_THRESHOLD = 0.07    # Distância para 3 dedos (scroll)
+FINGER_FLEX_THRESHOLD = 0.05      # Distância para considerar um dedo "dobrado"
 
 # --- Parâmetros de Clique ---
 # Distância exata para o clique ser registrado (Left, Right)

@@ -1,108 +1,108 @@
-# Relatório de Testes de Funcionalidade: Holopad
+# Functionality Test Report: Holopad
 
-## Teste #1: Iluminação Ideal (Solar)
+## Test #1: Ideal Illumination (Solar)
 
-**Condições:** Varanda com janelas de vidro à tarde (luz solar difusa).
-**Luminosidade (Lux):** `624 Lux`
+**Conditions:** Balcony with glass windows in the afternoon (diffused sunlight).  
+**Luminosity (Lux):** `624 Lux`
 
-| Funcionalidade | Resultado | Observações |
+| Functionality | Result | Observations |
 | :--- | :---: | :--- |
-| **Detecção Geral** | Ótimo | Detecção imediata e 100% estável (sem "jitter"). |
-| **Apontar (Mover)** | Ótimo | Movimento perfeitamente fluido e responsivo. |
-| **Feedback Visual** | OK | Todas as cores de estado (Azul, Amarelo, Vermelho) corresponderam. |
-| **Clique Esquerdo** | Ótimo (10/10) | Precisão total, sem falsos positivos. |
-| **Congelamento (Freeze)**| Ótimo | Congelou no momento exato da intenção de clique. |
-| **Arrastar (Drag)** | Ótimo | Manteve o clique pressionado sem falhas. |
-| **Clique Direito** | Ótimo (10/10) | Gesto distinto, sem conflitos. |
-| **Scroll (3 Dedos)** | Ótimo | Detecção imediata, rolagem suave. |
-| **Gesto de Parar** | Imediato | Funcionou na primeira tentativa. |
+| **General Detection** | Excellent | Immediate and 100% stable detection (no "jitter"). |
+| **Pointing (Move)** | Excellent | Perfectly fluid and responsive movement. |
+| **Visual Feedback** | OK | All status colors (Blue, Yellow, Red) corresponded. |
+| **Left Click** | Excellent (10/10) | Total accuracy, no false positives. |
+| **Freeze** | Excellent | Froze at the exact moment of the click intention. |
+| **Drag** | Excellent | Maintained the pressed click without failure. |
+| **Right Click** | Excellent (10/10) | Distinct gesture, no conflicts. |
+| **Scroll (3 Fingers)** | Excellent | Immediate detection, smooth scrolling. |
+| **Stop Gesture** | Immediate | Worked on the first try. |
 
-### Resumo Geral do Teste #1
-**Análise:** Condição de iluminação perfeita. O modelo operou com máxima performance, precisão e responsividade em todas as funcionalidades.
-**Conclusão:** ✅ **Usável**
+### General Summary of Test #1  
+**Analysis:** Perfect lighting condition. The model operated with maximum performance, accuracy, and responsiveness in all functionalities.   
+**Conclusion:** ✅ **Usable**  
 
 ---
 
-## Teste #2: Iluminação Interna (Boa)
+## Test #2: Indoor Illumination (Good)
 
-**Condições:** Sala bem iluminada (luz central acesa e janelas abertas).
-**Luminosidade (Lux):** `137 Lux`
+**Conditions:** Well-lit room (central light on and windows open).  
+**Luminosity (Lux):** `137 Lux`   
 
-| Funcionalidade | Resultado | Observações |
+| Functionality | Result | Observations |
 | :--- | :---: | :--- |
-| **Detecção Geral** | Ótimo | Detecção imediata e estável. |
-| **Apontar (Mover)** | Bom | Leve latência ("lag") perceptível, mas totalmente funcional. |
-| **Feedback Visual** | OK | Todas as cores de estado funcionaram. |
-| **Clique Esquerdo** | Bom (>7/10) | **Falsos positivos (cliques não intencionais) ocorreram esporadicamente.** |
-| **Congelamento (Freeze)**| Ótimo | Funcionou como esperado. |
-| **Arrastar (Drag)** | Bom | **Atraso notável para *iniciar* o gesto de arrastar**, mas manteve. |
-| **Clique Direito** | Bom (>7/10) | Precisão boa, sem conflitos. |
-| **Scroll (3 Dedos)** | Ótimo | Detecção imediata e suave. |
-| **Gesto de Parar** | Imediato | Funcionou na primeira tentativa. |
+| **General Detection** | Excellent | Immediate and stable detection. |
+| **Pointing (Move)** | Good | Perceptible slight latency ("lag"), but fully functional. |
+| **Visual Feedback** | OK | All status colors worked. |
+| **Left Click** | Good (>7/10) | **False positives (unintentional clicks) occurred sporadically.** |
+| **Freeze** | Excellent | Worked as expected. |
+| **Drag** | Good | **Noticeable delay to *start* the dragging gesture**, but maintained. |
+| **Right Click** | Good (>7/10) | Good accuracy, no conflicts. |
+| **Scroll (3 Fingers)** | Excellent | Immediate and smooth detection. |
+| **Stop Gesture** | Immediate | Worked on the first try. |
 
-### Resumo Geral do Teste #2
-**Análise:** Iluminação interna muito boa. O desempenho geral continua excelente, mas com uma leve queda na responsividade (latência) e na precisão do clique.
-**Conclusão:** ✅ **Usável**
+### General Summary of Test #2  
+**Analysis:** Very good indoor lighting. General performance remains excellent, but with a slight drop in responsiveness (latency) and click accuracy.  
+**Conclusion:** ✅ **Usable**  
 
 ---
 
-## Teste #3: Iluminação Interna (Padrão)
+## Test #3: Indoor Illumination (Standard)
 
-**Condições:** Quarto com a luz central acesa (sem luz solar).
-**Luminosidade (Lux):** `43 Lux`
+**Conditions:** Room with the central light on (no sunlight).  
+**Luminosity (Lux):** `43 Lux`   
 
-| Funcionalidade | Resultado | Observações |
+| Functionality | Result | Observations |
 | :--- | :---: | :--- |
-| **Detecção Geral** | Ótimo | Detecção imediata e estável. |
-| **Apontar (Mover)** | Bom | Leve latência, similar ao Teste #2. |
-| **Feedback Visual** | OK | Todas as cores de estado funcionaram. |
-| **Clique Esquerdo** | Bom (>7/10) | Falsos positivos ocorreram esporadicamente (similar ao Teste #2). |
-| **Congelamento (Freeze)**| Ótimo | Funcionou como esperado. |
-| **Arrastar (Drag)** | Bom | Atraso notável para iniciar o gesto (similar ao Teste #2). |
-| **Clique Direito** | Bom (>7/10) | Precisão boa, sem conflitos. |
-| **Scroll (3 Dedos)** | Ótimo | Detecção imediata e suave. |
-| **Gesto de Parar** | Imediato | Funcionou na primeira tentativa. |
+| **General Detection** | Excellent | Immediate and stable detection. |
+| **Pointing (Move)** | Good | Slight latency, similar to Test #2. |
+| **Visual Feedback** | OK | All status colors worked. |
+| **Left Click** | Good (>7/10) | False positives occurred sporadically (similar to Test #2). |
+| **Freeze** | Excellent | Worked as expected. |
+| **Drag** | Good | Noticeable delay to start the gesture (similar to Test #2). |
+| **Right Click** | Good (>7/10) | Good accuracy, no conflicts. |
+| **Scroll (3 Fingers)** | Excellent | Immediate and smooth detection. |
+| **Stop Gesture** | Immediate | Worked on the first try. |
 
-### Resumo Geral do Teste #3
-**Análise:** O desempenho foi funcionalmente idêntico ao Teste #2, sugerindo que `~40 Lux` ainda é suficiente para uma operação robusta.
-**Conclusão:** ✅ **Usável**
+### General Summary of Test #3   
+**Analysis:** Performance was functionally identical to Test #2, suggesting that `~40 Lux` is still sufficient for robust operation.   
+**Conclusion:** ✅ **Usable**   
 
 ---
 
-## Teste #4: Iluminação Baixa (Lâmpada)
+## Test #4: Low Illumination (Lamp)
 
-**Condições:** Quarto escuro com uma lâmpada (abajur) ligada.
-**Luminosidade (Lux):** `5 Lux`
+**Conditions:** Dark room with a lamp (bedside lamp) on.  
+**Luminosity (Lux):** `5 Lux`  
 
-| Funcionalidade | Resultado | Observações |
+| Functionality | Result | Observations |
 | :--- | :---: | :--- |
-| **Detecção Geral** | Ruim | Detecção imediata, mas com **"jitter" (tremor) leve** constante. |
-| **Apontar (Mover)** | Ruim | **Latência significativa**, dificultando o controle fino. |
-| **Feedback Visual** | Ruim | As cores de estado atualizavam, mas com atraso visível. |
-| **Clique Esquerdo** | Ruim (<7/10) | Alta taxa de falsos positivos. |
-| **Congelamento (Freeze)**| Ruim | Atraso perceptível para congelar o cursor. |
-| **Arrastar (Drag)** | Bom | Funcionou, mas **soltou o clique involuntariamente** algumas vezes. |
-| **Clique Direito** | Ruim (<7/10) | **Conflito de Gesto:** Confundiu o clique direito com o gesto de 'Scroll'. |
-| **Scroll (3 Dedos)** | Ruim | Detecção imediata, mas a rolagem foi lenta e travada. |
-| **Gesto de Parar** | Imediato | Funcionou. (Ver Análise). |
+| **General Detection** | Poor | Immediate detection, but with constant **slight "jitter" (trembling)**. |
+| **Pointing (Move)** | Poor | **Significant latency**, making fine control difficult. |
+| **Visual Feedback** | Poor | Status colors updated, but with visible delay. |
+| **Left Click** | Poor (<7/10) | High rate of false positives. |
+| **Freeze** | Poor | Perceptible delay in freezing the cursor. |
+| **Drag** | Good | Worked, but **involuntarily released the click** a few times. |
+| **Right Click** | Poor (<7/10) | **Gesture Conflict:** Confused the right click with the 'Scroll' gesture. |
+| **Scroll (3 Fingers)** | Poor | Immediate detection, but scrolling was slow and choppy. |
+| **Stop Gesture** | Immediate | Worked. (See Analysis). |
 
-### Resumo Geral do Teste #4
-**Análise:** Desempenho severamente degradado. A baixa luz causou "jitter" e alta latência.
-**Bug Crítico:** Ocorreram conflitos de gestos, principalmente o modelo interpretando cliques/scrolls como o gesto de "Parar", forçando a reinicialização do programa.
-**Conclusão:** ⚠️ **Usável com dificuldade**
-
+### General Summary of Test #4  
+**Analysis:** Severely degraded performance. Low light caused "jitter" and high latency.   
+**Critical Bug:** Gesture conflicts occurred, primarily the model interpreting clicks/scrolls as the "Stop" gesture, forcing program restart.   
+**Conclusion:** ⚠️ **Usable with difficulty**   
+  
 ---
 
-## Teste #5: Iluminação Extrema (Monitor)
+## Test #5: Extreme Illumination (Monitor)
 
-**Condições:** Quarto escuro, apenas com a iluminação do monitor.
-**Luminosidade (Lux):** `1 Lux`
+**Conditions:** Dark room, only monitor illumination.   
+**Luminosity (Lux):** `1 Lux`   
 
-| Funcionalidade | Resultado | Observações |
+| Functionality | Result | Observations |
 | :--- | :---: | :--- |
-| **Detecção Geral** | Falha | A mão foi detectada inicialmente. |
-| **Todos os Gestos** | Falha | Qualquer gesto (apontar, clicar, etc.) foi interpretado erroneamente como o gesto de "Parar". |
+| **Detecção Geral** | Failure | The hand was initially detected. |
+| **All Gestures** | Failure | Any gesture (pointing, clicking, etc.) was erroneously interpreted as the "Stop" gesture. |
 
-### Resumo Geral do Teste #5
-**Análise:** Falha crítica e total. O modelo não consegue distinguir landmarks com eficácia, interpretando qualquer movimento como o gesto de punho fechado ("Parar"). O programa encerrava imediatamente ao tentar qualquer interação.
-**Conclusão:** ❌ **Inutilizável**
+### General Summary of Test #5     
+**Analysis:** Critical and total failure. The model cannot effectively distinguish landmarks, interpreting any movement as the closed fist ("Stop") gesture. The program immediately closed upon attempting any interaction.   
+**Conclusion:** ❌ **Unusable**   

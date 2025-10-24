@@ -1,11 +1,19 @@
 from supabase import create_client, Client
+from supabase.lib.client_options import ClientOptions # <-- IMPORTAR ISSO
+import httpx # <-- IMPORTAR ISSO
 import config
 
 # CONFIGURAÇÃO DO BANCO DE DADOS 
 try:
+
+    options = ClientOptions(
+        httpx_client=httpx.Client(verify=False)
+    )
+
     # cria cliente
-    supabase: Client = create_client(config.SUPABASE_URL, config.SUPABASE_KEY)
+    supabase: Client = create_client(config.SUPABASE_URL, config.SUPABASE_KEY, options=options)
     print("✅ Conexão com o Supabase bem-sucedida!")
+    print(f"chave api lida: {config.SUPABASE_KEY}")
 except Exception as e:
     print(f"❌ Erro ao conectar com o Supabase: {e}")
     raise ConnectionError("Falha ao iniciar cliente supabase") from e
@@ -93,8 +101,10 @@ def atualizar_estoque(nome_produto:str,qtd_comprada:float,lista_produtos:dict):
     
     
 # --- TESTES ---
-cache_local = carregar_produtos()
-print(cache_local)
+# cache_local = carregar_produtos()
+# print(cache_local)
+
+
 
 
         

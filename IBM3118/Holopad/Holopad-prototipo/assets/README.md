@@ -31,7 +31,7 @@ This project has been re-architected from a simple mouse mover into a full-featu
 | **Right Click** | Pinch Thumb & Ring Finger | (Instant action) |
 | **Activate Scroll** | Raise Index, Middle, & Ring Fingers | "SCROLL MODE" text |
 | **Scroll Up/Down** | Move hand Up/Down in Scroll Mode | (Page scrolls) |
-| **Stop Program** | Separate all fingers, then Close Fist | "STOPPING..." text |
+| **Stop Program** | Use the Hang Loose gesture | "STOPPING..." text |
 
 ---
 

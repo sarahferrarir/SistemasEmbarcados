@@ -1,5 +1,6 @@
 import cv2
 import config  # Importa seu config.py
+import time #marcar o tempo de execução
 
 # --- Importação dos Módulos de Hardware e Lógica ---
 try:
@@ -40,7 +41,6 @@ if not produtos_locais_cache:
     exit()
 
 # 2. Conectar à Balança
-# (Altere 'COM6' para a porta serial correta do seu Arduino)
 balanca_serial = balanca.conectar_balanca(port='COM4') 
 if balanca_serial is None:
     print("❌ Erro fatal: Não foi possível conectar à balança. Encerrando.")
@@ -65,6 +65,9 @@ try:
         # --- ETAPA 1: AGUARDAR O ITEM (BLOQUEANTE) ---
         # O programa para aqui e espera o usuário colocar um item
         peso_g = balanca.esperar_por_peso(balanca_serial)
+
+        #comecar marcacao de tempo
+        start_time = time.monotonic()
         
         if peso_g <= 0: # (Pode acontecer se o usuário der Ctrl+C)
             break
@@ -103,7 +106,14 @@ try:
                 if confirmacao == 's':
                     # 4. ATUALIZAR O ESTOQUE NO BANCO DE DADOS
                     sucesso, msg = db.atualizar_estoque(nome_produto, peso_kg, produtos_locais_cache)
+
+                    #marcacao do tempo final
+                    finish_time = time.monotonic()
+                    #calculo do tempo total
+                    tempo_total = finish_time - start_time
+
                     print(f"  Resultado da Compra: {msg}")
+                    print(f"  Tempo total da transação: {tempo_total:.2f} segundos.")
                 else:
                     print("  Compra cancelada pelo usuário.")
                 

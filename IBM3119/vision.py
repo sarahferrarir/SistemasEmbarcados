@@ -73,7 +73,28 @@ def get_detections(cap: cv2.VideoCapture, num_frames: int = 10):
         # (Correção no cálculo para ser mais preciso)
         stability = (count / len(detections_list)) * 100
         print(f"✅ Detecção estável: {most_common_product} (encontrado em {stability:.0f}% dos frames válidos)")
-        return most_common_product, last_frame #retorna o produto mais comum e o frame
+
+        # --- DESENHAR A BOX NO ÚLTIMO FRAME ---
+        # Detectar mais uma vez no último frame para desenhar a box
+        results = model(last_frame, verbose=False)
+        frame_with_box = last_frame.copy()
+
+        for result in results:
+            for box in result.boxes:
+                confidence = box.conf[0].item()
+                class_id = int(box.cls[0].item())
+                class_name = result.names[class_id]
+
+                if class_name == most_common_product and confidence >= config.CONFIDENCE_THRESHOLD:
+                    # Desenhar a box
+                    x1, y1, x2, y2 = map(int, box.xyxy[0])
+                    cv2.rectangle(frame_with_box, (x1, y1), (x2, y2), (0, 255, 0), 2)
+                    cv2.putText(frame_with_box, f"{class_name} {confidence:.2f}", 
+                                (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 
+                                0.9, (0, 255, 0), 2)
+                    break
+                    
+        return most_common_product, frame_with_box #retorna o produto mais comum e o frame com a box desenhada
     
     except Exception as e:
         print(f"❌ Erro ao determinar a detecção mais comum: {e}")

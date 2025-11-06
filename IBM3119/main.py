@@ -121,7 +121,7 @@ try:
         cv2.imshow("Última Detecção", frame_analisado)
         print("\n(Pressione qualquer tecla na janela da imagem para fechar e continuar...)")
         cv2.waitKey(0) # Espera uma tecla na janela do OpenCV
-        cv2.destroyWindow("Última Detecção")
+        cv2.destroyAllWindows() #destroi todas as janelas do OpenCV
         
         # Agora, bloqueia até o peso ser removido
         balanca.esperar_zerar(balanca_serial)
